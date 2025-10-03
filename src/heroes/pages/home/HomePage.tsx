@@ -19,149 +19,23 @@ import {
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { CustomJumbotron } from "@/components/custom/CustomJumbotron"
+import { HeroStats } from "@/heroes/components/HeroStats"
 
 export const HomePage = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50">
-      <div className="max-w-7xl mx-auto p-6">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
-            Superhero Universe
-          </h1>
-          <p className="text-gray-600 text-lg">Discover, explore, and manage your favorite superheroes and villains</p>
-        </div>
+    <>
+      <>
+        <CustomJumbotron
+          title="Universo de SuperHeroes"
+          description="Descubre, explora y administra tus superheroes y villanos favoritos"
+        />
 
         {/* Stats Dashboard */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Total Characters</CardTitle>
-              <Users className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">16</div>
-              <div className="flex gap-1 mt-2">
-                <Badge variant="secondary" className="text-xs">
-                  12 Heroes
-                </Badge>
-                <Badge variant="destructive" className="text-xs">
-                  2 Villains
-                </Badge>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Favorites</CardTitle>
-              <Heart className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-red-600">3</div>
-              <p className="text-xs text-muted-foreground">18.8% of total</p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Strongest</CardTitle>
-              <Zap className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-lg font-bold">Superman</div>
-              <p className="text-xs text-muted-foreground">Strength: 10/10</p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Smartest</CardTitle>
-              <Trophy className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-lg font-bold">Batman</div>
-              <p className="text-xs text-muted-foreground">Intelligence: 10/10</p>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Controls */}
-        <div className="flex flex-col lg:flex-row gap-4 mb-8">
-          {/* Search */}
-          <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
-            <Input placeholder="Search heroes, villains, powers, teams..." className="pl-12 h-12 text-lg" />
-          </div>
-
-          {/* Action buttons */}
-          <div className="flex gap-2">
-            <Button variant="outline" className="h-12 bg-transparent">
-              <Filter className="h-4 w-4 mr-2" />
-              Filters
-            </Button>
-
-            <Button variant="outline" className="h-12 bg-transparent">
-              <SortAsc className="h-4 w-4 mr-2" />
-              Sort by Name
-            </Button>
-
-            <Button variant="outline" className="h-12 bg-transparent">
-              <Grid className="h-4 w-4" />
-            </Button>
-
-            <Button className="h-12">
-              <Plus className="h-4 w-4 mr-2" />
-              Add Character
-            </Button>
-          </div>
-        </div>
-
-        {/* Advanced Filters */}
-        <div className="bg-white rounded-lg p-6 mb-8 shadow-sm border">
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="text-lg font-semibold">Advanced Filters</h3>
-            <Button variant="ghost">Clear All</Button>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Team</label>
-              <div className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm">
-                All teams
-              </div>
-            </div>
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Category</label>
-              <div className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm">
-                All categories
-              </div>
-            </div>
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Universe</label>
-              <div className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm">
-                All universes
-              </div>
-            </div>
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Status</label>
-              <div className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm">
-                All statuses
-              </div>
-            </div>
-          </div>
-          <div className="mt-4">
-            <label className="text-sm font-medium">Minimum Strength: 0/10</label>
-            <div className="relative flex w-full touch-none select-none items-center mt-2">
-              <div className="relative h-2 w-full grow overflow-hidden rounded-full bg-secondary">
-                <div className="absolute h-full bg-primary" style={{ width: "0%" }} />
-              </div>
-              <div className="block h-5 w-5 rounded-full border-2 border-primary bg-background ring-offset-background transition-colors" />
-            </div>
-          </div>
-        </div>
+      <HeroStats />
 
         {/* Tabs */}
         <Tabs value="all" className="mb-8">
@@ -175,17 +49,6 @@ export const HomePage = () => {
             <TabsTrigger value="villains">Villains (2)</TabsTrigger>
           </TabsList>
         </Tabs>
-
-        {/* Results info */}
-        <div className="flex justify-between items-center mb-6">
-          <div className="flex items-center gap-4">
-            <p className="text-gray-600">Showing 6 of 16 characters</p>
-            <Badge variant="secondary" className="flex items-center gap-1">
-              <Filter className="h-3 w-3" />
-              Filtered
-            </Badge>
-          </div>
-        </div>
 
         {/* Character Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
@@ -597,7 +460,6 @@ export const HomePage = () => {
               <img
                 src="/placeholder.svg?height=300&width=300"
                 alt="Iron Man"
-                
                 className="object-cover transition-all duration-500 group-hover:scale-110"
               />
 
@@ -816,7 +678,7 @@ export const HomePage = () => {
             <ChevronRight className="h-4 w-4" />
           </Button>
         </div>
-      </div>
-    </div>
+      </>
+    </>
   )
 }
