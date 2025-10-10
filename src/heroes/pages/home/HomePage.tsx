@@ -15,13 +15,13 @@ export const HomePage = () => {
 
   const [active, setActive] = useState<'all' | 'favorites' | 'heroes' | 'villains'>('all');
 
-const {data} = useQuery({
-  queryKey: ['heroes'],
-  queryFn: () => getHeroByPageAction(),
-  staleTime: 1000 * 60 * 5,
-})
+  const { data: heroResponse } = useQuery({
+    queryKey: ['heroes'],
+    queryFn: () => getHeroByPageAction(),
+    staleTime: 1000 * 60 * 5,
+  })
 
-console.log(data)
+  console.log(heroResponse)
 
   return (
     <>
@@ -46,7 +46,8 @@ console.log(data)
           </TabsList>
 
           <TabsContent value="all">
-            <h1>All</h1>
+            <h1 className="my-5">All</h1>
+             <HeroGrid heros={heroResponse?.heroes ?? []} />
           </TabsContent>
 
           <TabsContent value="favorites">
@@ -62,11 +63,12 @@ console.log(data)
           </TabsContent>
         </Tabs>
 
-        {/* Character Grid */}
-        <HeroGrid />
 
         {/* Pagination */}
-        <CustomPagination totalPages={5} />
+        {heroResponse?.pages && heroResponse?.total && (
+          <CustomPagination totalPages={heroResponse?.pages} />
+        )}
+
       </>
     </>
   )
