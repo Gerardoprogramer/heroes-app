@@ -18,6 +18,8 @@ export const HomePage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
 const activedTab= searchParams.get('tab') ?? 'all';
+const page= searchParams.get('page') ?? '1';
+const limit= searchParams.get('limit') ?? '6';
 
   const selectTab = useMemo(() => {
     const validTab =  ['all' , 'favorites' , 'heroes' , 'villains']
@@ -26,13 +28,13 @@ const activedTab= searchParams.get('tab') ?? 'all';
   },[activedTab]
 )
 
+console.log(page)
   const { data: heroResponse } = useQuery({
     queryKey: ['heroes'],
-    queryFn: () => getHeroByPageAction(),
+    queryFn: () => getHeroByPageAction(+page,+limit),
     staleTime: 1000 * 60 * 5,
   })
 
-  console.log(heroResponse)
 
   return (
     <>
