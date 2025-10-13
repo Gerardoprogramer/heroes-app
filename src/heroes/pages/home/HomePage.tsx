@@ -17,21 +17,20 @@ export const HomePage = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
 
-const activedTab= searchParams.get('tab') ?? 'all';
-const page= searchParams.get('page') ?? '1';
-const limit= searchParams.get('limit') ?? '6';
+  const activedTab = searchParams.get('tab') ?? 'all';
+  const page = searchParams.get('page') ?? '1';
+  const limit = searchParams.get('limit') ?? '6';
 
   const selectTab = useMemo(() => {
-    const validTab =  ['all' , 'favorites' , 'heroes' , 'villains']
+    const validTab = ['all', 'favorites', 'heroes', 'villains']
 
     return validTab.includes(activedTab) ? activedTab : 'all'
-  },[activedTab]
-)
+  }, [activedTab]
+  )
 
-console.log(page)
   const { data: heroResponse } = useQuery({
-    queryKey: ['heroes'],
-    queryFn: () => getHeroByPageAction(+page,+limit),
+    queryKey: ['heroes', { page, limit }],
+    queryFn: () => getHeroByPageAction(+page, +limit),
     staleTime: 1000 * 60 * 5,
   })
 
@@ -96,9 +95,8 @@ console.log(page)
           </TabsContent>
         </Tabs>
 
-
         {/* Pagination */}
-        {heroResponse?.pages && heroResponse?.total && (
+        {heroResponse?.pages && (
           <CustomPagination totalPages={heroResponse?.pages} />
         )}
 
