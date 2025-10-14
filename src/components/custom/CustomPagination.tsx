@@ -16,7 +16,6 @@ export const CustomPagination = ({ totalPages }: Props) => {
     const page = isNaN(+queryPage) ? 1 : +queryPage
 
     const handlePageChange = (page: number) => {
-        console.log(page)
         if (page < 1 || page > totalPages) return;
 
         searchParams.set('page', page.toString())

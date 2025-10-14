@@ -9,6 +9,8 @@ import { HeroGrid } from "@/heroes/components/HeroGrid"
 import { CustomPagination } from "@/components/custom/CustomPagination"
 import { CustomBreadcrumb } from "@/components/custom/CustomBreadcrumb"
 import { getHeroByPageAction } from "@/heroes/actions/get-heroes-by-page.action"
+import { useHeroSummary } from "@/heroes/hooks/useHeroSummary"
+
 
 
 
@@ -34,6 +36,7 @@ export const HomePage = () => {
     staleTime: 1000 * 60 * 5,
   })
 
+      const { data: summaryInformationResponse } = useHeroSummary();
 
   return (
     <>
@@ -54,7 +57,7 @@ export const HomePage = () => {
                 prev.set('tab', 'all')
                 return prev;
               })}
-            >All Characters (16)</TabsTrigger>
+            >All Characters ({summaryInformationResponse?.totalHeroes})</TabsTrigger>
             <TabsTrigger value="favorites"
               onClick={() => setSearchParams((prev) => {
                 prev.set('tab', 'favorites')
@@ -68,13 +71,13 @@ export const HomePage = () => {
                 prev.set('tab', 'heroes')
                 return prev;
               })}
-            >Heroes (12)</TabsTrigger>
+            >Heroes ({summaryInformationResponse?.heroCount})</TabsTrigger>
             <TabsTrigger value="villains"
               onClick={() => setSearchParams((prev) => {
                 prev.set('tab', 'villains')
                 return prev;
               })}
-            >Villains (2)</TabsTrigger>
+            >Villains ({summaryInformationResponse?.villainCount})</TabsTrigger>
           </TabsList>
 
           <TabsContent value="all">
