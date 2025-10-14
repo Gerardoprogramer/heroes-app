@@ -10,6 +10,7 @@ import { CustomPagination } from "@/components/custom/CustomPagination"
 import { CustomBreadcrumb } from "@/components/custom/CustomBreadcrumb"
 import { getHeroByPageAction } from "@/heroes/actions/get-heroes-by-page.action"
 import { useHeroSummary } from "@/heroes/hooks/useHeroSummary"
+import { usePaginatedHero } from "@/heroes/hooks/usePaginatedHero"
 
 
 
@@ -30,13 +31,9 @@ export const HomePage = () => {
   }, [activedTab]
   )
 
-  const { data: heroResponse } = useQuery({
-    queryKey: ['heroes', { page, limit }],
-    queryFn: () => getHeroByPageAction(+page, +limit),
-    staleTime: 1000 * 60 * 5,
-  })
+  const { data: heroResponse } = usePaginatedHero({page, limit});
 
-      const { data: summaryInformationResponse } = useHeroSummary();
+  const { data: summaryInformationResponse } = useHeroSummary();
 
   return (
     <>
