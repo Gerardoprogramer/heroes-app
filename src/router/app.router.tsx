@@ -6,6 +6,7 @@ import { HeroPage } from "@/heroes/pages/hero/HeroPage";
 import { AdminPage } from "@/admin/pages/AdminPage";
 import { HeroesLayout } from "@/heroes/layouts/HeroesLayout";
 import { AdminLayout } from "@/admin/layouts/AdminLayout";
+import { NotFoundPage } from "@/NotFoundPages/NotFoundPage";
 
 
 const SearchPage = lazy(() => import('@/heroes/pages/search/SearchPage'))
@@ -41,5 +42,9 @@ export const appRouter = createBrowserRouter([
             }
         ]
 
-    }
+    },
+    {
+        path: '*',
+        element: <NotFoundPage />,
+    },
 ])
