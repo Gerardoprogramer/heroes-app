@@ -1,4 +1,4 @@
-import { useMemo } from "react"
+import { use, useMemo } from "react"
 import { useSearchParams } from "react-router"
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -9,6 +9,7 @@ import { CustomPagination } from "@/components/custom/CustomPagination"
 import { CustomBreadcrumb } from "@/components/custom/CustomBreadcrumb"
 import { useHeroSummary } from "@/heroes/hooks/useHeroSummary"
 import { usePaginatedHero } from "@/heroes/hooks/usePaginatedHero"
+import { FavoriteHeroContext } from "@/heroes/context/FavoriteHeroContext"
 
 
 
@@ -17,6 +18,8 @@ export const HomePage = () => {
 
 
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const { favoriteCount, favorites } = use(FavoriteHeroContext);
 
   const activedTab = searchParams.get('tab') ?? 'all';
   const page = searchParams.get('page') ?? '1';
@@ -61,7 +64,7 @@ export const HomePage = () => {
                 return prev;
               })}
               className="flex items-center gap-2">
-              Favorites (3)
+              Favorites ({favoriteCount})
             </TabsTrigger>
             <TabsTrigger value="heroes"
               onClick={() => setSearchParams((prev) => {
@@ -87,7 +90,7 @@ export const HomePage = () => {
           </TabsContent>
 
           <TabsContent value="favorites">
-            <h1>favorito</h1>
+            <HeroGrid heros={favorites} />
           </TabsContent>
 
           <TabsContent value="heroes">
@@ -100,7 +103,7 @@ export const HomePage = () => {
         </Tabs>
 
         {/* Pagination */}
-        {heroResponse?.pages && (
+        {heroResponse?.pages && selectTab !== 'favorites' && (
           <CustomPagination totalPages={heroResponse?.pages} />
         )}
 
