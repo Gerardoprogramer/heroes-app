@@ -10,7 +10,6 @@ import { useHeroSummary } from "../hooks/useHeroSummary"
 import { FavoriteHeroContext } from "../context/FavoriteHeroContext"
 import { use } from "react"
 
-
 export const HeroStats = () => {
 
     const { data: summaryInformationResponse } = useHeroSummary();
