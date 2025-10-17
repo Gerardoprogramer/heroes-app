@@ -116,14 +116,14 @@ export const SearchControl = () => {
                             </div>
                             <div className="mt-4">
                                 <label className="text-sm font-medium">Minimum Strength: 0/10</label>
-                                <Slider 
-                                defaultValue={[strength]} 
-                                onValueChange={value => setSearchParams((prev) => {
-                                    prev.set('strength', value[0].toString());
-                                    return prev;
-                                })}
-                                max={10} 
-                                step={1} />
+                                <Slider
+                                    defaultValue={[strength]}
+                                    onValueChange={value => setSearchParams((prev) => {
+                                        prev.set('strength', value[0].toString());
+                                        return prev;
+                                    })}
+                                    max={10}
+                                    step={1} />
                             </div>
                         </div>
                     </AccordionContent>
