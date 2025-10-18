@@ -13,8 +13,12 @@ export const SearchPage = () => {
 
   const name = searchParams.get('name') ?? '';
   const strength = searchParams.get('strength') ?? '';
+  const team = searchParams.get('team') ?? '';
+  const category = searchParams.get('category') ?? '';
+  const universe = searchParams.get('universe') ?? '';
+  const status = searchParams.get('status') ?? '';
 
-  const { data: heroesSearch } = useSearchHero({ name, strength });
+  const { data: heroesSearch } = useSearchHero({ name, strength, team, category, universe, status });
 
   return (
     <>
