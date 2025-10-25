@@ -1,4 +1,5 @@
-import { createBrowserRouter } from "react-router";
+// import { createBrowserRouter } from "react-router";
+import { createHashRouter } from "react-router";
 import { lazy } from "react";
 
 import { HomePage } from "@/heroes/pages/home/HomePage";
@@ -11,7 +12,8 @@ import { NotFoundPage } from "@/NotFoundPages/NotFoundPage";
 
 const SearchPage = lazy(() => import('@/heroes/pages/search/SearchPage'))
 
-export const appRouter = createBrowserRouter([
+// export const appRouter = createBrowserRouter([
+export const appRouter = createHashRouter([
 
     {
         path: '/',
