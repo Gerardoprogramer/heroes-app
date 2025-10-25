@@ -79,14 +79,14 @@ export const SearchControl = () => {
 
     }
 
-const handleClearFilters = () => {
-    searchParams.delete('strength');
-    searchParams.delete('team');
-    searchParams.delete('category');
-    searchParams.delete('universe');
-    searchParams.delete('status');
-    setSearchParams(searchParams);
-}
+    const handleClearFilters = () => {
+        searchParams.delete('strength');
+        searchParams.delete('team');
+        searchParams.delete('category');
+        searchParams.delete('universe');
+        searchParams.delete('status');
+        setSearchParams(searchParams);
+    }
 
     return (
 
@@ -105,7 +105,7 @@ const handleClearFilters = () => {
                 </div>
 
                 {/* Action buttons */}
-                <div className="flex gap-2">
+                <div className="flex gap-2 flex-col md:flex-row">
                     <Button variant={filters ? "default" : "outline"} className="h-12" onClick={handleFilterClick}>
                         <Filter className="h-4 w-4 mr-2" />
                         Filters
@@ -116,14 +116,14 @@ const handleClearFilters = () => {
                         Sort by Name
                     </Button>
 
-                    <Button variant="outline" className="h-12">
-                        <Grid className="h-4 w-4" />
-                    </Button>
+                        <Button variant="outline" className="h-12">
+                            <Grid className="h-4 w-4" />
+                        </Button>
 
-                    <Button className="h-12">
-                        <Plus className="h-4 w-4 mr-2" />
-                        Add Character
-                    </Button>
+                        <Button className="h-12">
+                            <Plus className="h-4 w-4 mr-2" />
+                            Add Character
+                        </Button>
                 </div>
             </div>
 
@@ -140,7 +140,7 @@ const handleClearFilters = () => {
                                 <AdvancedFilters name={namesFilters[1].name} array={namesFilters[1].array} />
                                 <AdvancedFilters name={namesFilters[2].name} array={namesFilters[2].array} />
                                 <AdvancedFilters name={namesFilters[3].name} array={namesFilters[3].array} />
-                                
+
                             </div>
                             <div className="mt-4">
                                 <label className="text-sm font-medium">Minimum Strength: 0/10</label>

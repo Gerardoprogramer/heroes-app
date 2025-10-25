@@ -7,13 +7,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Shield, Zap, Brain, Gauge, Users, Star, Award } from "lucide-react"
 import { useHeroInformation } from "@/heroes/hooks/useHeroInformation"
 import { NotFoundPage } from "@/NotFoundPages/NotFoundPage"
+import { useState } from "react"
 
 export const HeroPage = () => {
 
   const { idSlug = '' } = useParams();
   const { data: superheroData } = useHeroInformation(idSlug);
 
-
+  const [selectTab, setSelectTab] = useState('stats');
 
   const totalPower = superheroData ? (superheroData.strength + superheroData.intelligence + superheroData.speed + superheroData.durability) : 0;
 
@@ -76,25 +77,43 @@ export const HeroPage = () => {
 
         {/* Main Content */}
         <div className="max-w-7xl mx-auto px-6 py-8">
-          <Tabs defaultValue="stats" className="w-full">
-            <TabsList className="grid w-full grid-cols-4 mb-8">
-              <TabsTrigger value="stats" className="flex items-center gap-2">
-                <Gauge className="w-4 h-4" />
-                Estadísticas
-              </TabsTrigger>
-              <TabsTrigger value="powers" className="flex items-center gap-2">
-                <Zap className="w-4 h-4" />
-                Poderes
-              </TabsTrigger>
-              <TabsTrigger value="team" className="flex items-center gap-2">
-                <Users className="w-4 h-4" />
-                Equipo
-              </TabsTrigger>
-              <TabsTrigger value="info" className="flex items-center gap-2">
-                <Award className="w-4 h-4" />
-                Información
-              </TabsTrigger>
-            </TabsList>
+
+          <div className="sm:hidden mb-4">
+            <select
+              value={selectTab}
+              onChange={(e) => { setSelectTab(e.target.value) }}
+              className="w-full rounded-md border px-3 py-2 text-sm"
+            >
+              <option value="stats">📊 Estadísticas</option>
+              <option value="powers">⚡ Poderes</option>
+              <option value="team">👥 Equipo</option>
+              <option value="info">🏆 Información</option>
+            </select>
+          </div>
+
+          <Tabs value={selectTab} className="w-full">
+
+            <div className="hidden sm:block">
+
+              <TabsList className="grid w-full grid-cols-4 mb-8">
+                <TabsTrigger value="stats" onClick={() => setSelectTab('stats')} className="flex items-center gap-2">
+                  <Gauge className="w-4 h-4" />
+                  Estadísticas
+                </TabsTrigger>
+                <TabsTrigger value="powers" onClick={() => setSelectTab('powers')} className="flex items-center gap-2">
+                  <Zap className="w-4 h-4" />
+                  Poderes
+                </TabsTrigger>
+                <TabsTrigger value="team" onClick={() => setSelectTab('team')} className="flex items-center gap-2">
+                  <Users className="w-4 h-4" />
+                  Equipo
+                </TabsTrigger>
+                <TabsTrigger value="info" onClick={() => setSelectTab('info')} className="flex items-center gap-2">
+                  <Award className="w-4 h-4" />
+                  Información
+                </TabsTrigger>
+              </TabsList>
+            </div>
 
             <TabsContent value="stats" className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

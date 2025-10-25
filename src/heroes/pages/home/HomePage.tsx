@@ -12,8 +12,6 @@ import { usePaginatedHero } from "@/heroes/hooks/usePaginatedHero"
 import { FavoriteHeroContext } from "@/heroes/context/FavoriteHeroContext"
 
 
-
-
 export const HomePage = () => {
 
 
@@ -49,43 +47,68 @@ export const HomePage = () => {
         <HeroStats />
 
         {/* Tabs */}
+
+        <div className="sm:hidden mb-4">
+          <select
+            value={selectTab}
+            onChange={(e) => {
+              const v = e.target.value;
+              selectTab;
+              setSearchParams((prev) => {
+                prev.set('tab', v);
+                if (v === 'heroes') { prev.set('category', 'hero'); prev.set('page', '1'); }
+                if (v === 'villains') { prev.set('category', 'villain'); prev.set('page', '1'); }
+                if (v === 'all') { prev.set('category', 'all'); }
+                return prev;
+              });
+            }}
+            className="w-full rounded-md border px-3 py-2"
+          >
+            <option value="all">All Characters ({summaryInformationResponse?.totalHeroes})</option>
+            <option value="favorites">Favorites ({favoriteCount})</option>
+            <option value="heroes">Heroes ({summaryInformationResponse?.heroCount})</option>
+            <option value="villains">Villains ({summaryInformationResponse?.villainCount})</option>
+          </select>
+        </div>
+
         <Tabs value={selectTab} className="mb-8">
-          <TabsList className="grid w-full grid-cols-4">
-            <TabsTrigger value="all"
-              onClick={() => setSearchParams((prev) => {
-                prev.set('tab', 'all')
-                prev.set('category', 'all')
-                return prev;
-              })}
-            >All Characters ({summaryInformationResponse?.totalHeroes})</TabsTrigger>
-            <TabsTrigger value="favorites"
-              onClick={() => setSearchParams((prev) => {
-                prev.set('tab', 'favorites')
-                return prev;
-              })}
-              className="flex items-center gap-2">
-              Favorites ({favoriteCount})
-            </TabsTrigger>
-            <TabsTrigger value="heroes"
-              onClick={() => setSearchParams((prev) => {
-                prev.set('tab', 'heroes')
-                prev.set('category', 'hero')
-                prev.set('page', '1')
-                return prev;
-              })}
-            >Heroes ({summaryInformationResponse?.heroCount})</TabsTrigger>
-            <TabsTrigger value="villains"
-              onClick={() => setSearchParams((prev) => {
-                prev.set('tab', 'villains')
-                prev.set('category', 'villain')
-                prev.set('page', '1')
-                return prev;
-              })}
-            >Villains ({summaryInformationResponse?.villainCount})</TabsTrigger>
-          </TabsList>
+          <div className="hidden sm:block">
+            <TabsList className="grid w-full grid-cols-4">
+              <TabsTrigger value="all"
+                onClick={() => setSearchParams((prev) => {
+                  prev.set('tab', 'all')
+                  prev.set('category', 'all')
+                  return prev;
+                })}
+              >All Characters ({summaryInformationResponse?.totalHeroes})</TabsTrigger>
+              <TabsTrigger value="favorites"
+                onClick={() => setSearchParams((prev) => {
+                  prev.set('tab', 'favorites')
+                  return prev;
+                })}
+                className="flex items-center gap-2">
+                Favorites ({favoriteCount})
+              </TabsTrigger>
+              <TabsTrigger value="heroes"
+                onClick={() => setSearchParams((prev) => {
+                  prev.set('tab', 'heroes')
+                  prev.set('category', 'hero')
+                  prev.set('page', '1')
+                  return prev;
+                })}
+              >Heroes ({summaryInformationResponse?.heroCount})</TabsTrigger>
+              <TabsTrigger value="villains"
+                onClick={() => setSearchParams((prev) => {
+                  prev.set('tab', 'villains')
+                  prev.set('category', 'villain')
+                  prev.set('page', '1')
+                  return prev;
+                })}
+              >Villains ({summaryInformationResponse?.villainCount})</TabsTrigger>
+            </TabsList>
+          </div>
 
           <TabsContent value="all">
-            <h1 className="my-5">All</h1>
             <HeroGrid heros={heroResponse?.heroes ?? []} />
           </TabsContent>
 
