@@ -14,7 +14,6 @@ import { FavoriteHeroContext } from "@/heroes/context/FavoriteHeroContext"
 
 export const HomePage = () => {
 
-
   const [searchParams, setSearchParams] = useSearchParams();
 
   const { favoriteCount, favorites } = use(FavoriteHeroContext);
