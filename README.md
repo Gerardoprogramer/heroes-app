@@ -4,9 +4,9 @@
 
 ## 🧩 Funcionalidades  
 - Lista de héroes con interfaz limpia y responsive.  
-- Filtro/búsqueda de héroes (o estará planeado).  
+- Filtro/búsqueda de héroes.  
 - Diseño modular con componentes reutilizables.  
-- Estilos personalizados con Tailwind CSS / CSS Modules (según el caso).  
+- Estilos personalizados con Tailwind CSS.  
 - Proyecto estructurado para escalar: TS, buenas prácticas, etc.
 
 ## 🛠 Tecnologías utilizadas  
@@ -28,7 +28,7 @@
 3. Ejecuta en modo desarrollo:  
    ```bash
    npm run dev  
-El proyecto se abrirá en http://localhost:5173 (o el puerto que Vite informe).
+El proyecto se abrirá en http://localhost:5173.
 
 ## ✅ Cómo contribuir
 - Crear issues sobre bugs o mejoras.
