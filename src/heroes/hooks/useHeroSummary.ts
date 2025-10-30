@@ -8,5 +8,6 @@ export const useHeroSummary = () => {
         queryKey: ['sumarry-information'],
         queryFn: getSummaryAction,
         staleTime: 1000 * 60 * 5,
+        placeholderData: (previousData) => previousData
     })
 }
