@@ -1,73 +1,45 @@
-# React + TypeScript + Vite
+# Heroes‑App  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🚀 Una aplicación web moderna para explorar héroes, desarrollada con **React + TypeScript + Vite**.
 
-Currently, two official plugins are available:
+## 🧩 Funcionalidades  
+- Lista de héroes con interfaz limpia y responsive.  
+- Filtro/búsqueda de héroes (o estará planeado).  
+- Diseño modular con componentes reutilizables.  
+- Estilos personalizados con Tailwind CSS / CSS Modules (según el caso).  
+- Proyecto estructurado para escalar: TS, buenas prácticas, etc.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠 Tecnologías utilizadas  
+- **Frontend**: React, TypeScript, Vite  
+- **UI / estilos**: Tailwind CSS (o CSS Modules)  
+- **Estructura**: Modular, componentes limpios, hooks personalizados  
+- **Configuración**: ESLint, tsconfig, Vite config  
 
-## React Compiler
+## 📦 Instalación  
+1. Clona el repositorio:  
+   ```bash
+   git clone https://github.com/Gerardoprogramer/heroes-app.git  
+   cd heroes-app  
+ 
+2. Clona el repositorio:  
+   ```bash
+   npm i
+   
+3. Ejecuta en modo desarrollo:  
+   ```bash
+   npm run dev  
+El proyecto se abrirá en http://localhost:5173 (o el puerto que Vite informe).
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+## ✅ Cómo contribuir
+- Crear issues sobre bugs o mejoras.
 
-## Expanding the ESLint configuration
+- Proponer PRs con nuevas funcionalidades.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Mejorar documentación o añadir tests.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📌 Roadmap próximo
+-  Tests unitarios y de integración (Vitest, React Testing Library).
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🎓 Créditos  
+Este proyecto fue desarrollado siguiendo conocimientos y enseñanzas del profesor **Fernando Herrera**.  
+Gracias por sus cursos y guía en el aprendizaje de **React, TypeScript y desarrollo web moderno**.
